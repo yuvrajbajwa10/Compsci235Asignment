@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+<head>
+    <title>Home Page</title>
+</head>
+
+{% block content %}
+<main>
+    <div class="searchBar">
+    <form method="POST" action="">
+        {{ form.csrf_token}}
+        {{form.searchText.label}}
+        {{form.searchText}}
+        {{form.submit}}
+    </form></div>
+</main>
+{% endblock %}

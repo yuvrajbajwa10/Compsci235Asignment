@@ -1,0 +1,86 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<main>
+<head>
+    <meta charset="UTF-8">
+    <title>{{movie.title}} {{"({0})".format(movie.release_year)}}</title>
+</head>
+    <div class = "BigTitle" > <h2>
+    {{movie.title}} {{"({0})".format(movie.release_year)}}
+    </h2></div>
+    <table id = "MovieDetailsTable">
+        <tr>
+            <th>
+                <div class="movieDetails"><h4>Movie Name</h4></div>
+            </th>
+            <th>
+                <div class="movieDetails"><h4>{{movie.title}}</h4></div>
+            </th>
+        </tr>
+         <tr>
+            <th>
+                <div class="movieDetails"><h4>Movie release year</h4></div>
+            </th>
+            <th>
+                <div class="movieDetails"><h4>{{movie.release_year}}</h4></div>
+            </th>
+        </tr>
+        <tr>
+            <th>
+                <div class="movieDetails"><h4>Movie Description</h4></div>
+            </th>
+            <th>
+                <div class="movieDetails"><h4>{{movie.description}}</h4></div>
+            </th>
+        </tr>
+        <tr>
+            <th>
+                <div class="movieDetails"><h4>Movie Director</h4></div>
+            </th>
+            <th>
+                <div class="movieDetails"><h4>{{movie.director.director_full_name}}</h4></div>
+            </th>
+        </tr>
+        <tr>
+            <th>
+                <div class="movieDetails"><h4>Movie Runtime minutes</h4></div>
+            </th>
+            <th>
+                <div class="movieDetails"><h4>{{movie.runtime_minutes}} Minutes</h4></div>
+            </th>
+        </tr>
+         <tr>
+            <th>
+                <div class="movieDetails"><h4>Movie Actors</h4></div>
+            </th>
+            <th>
+                <div class="movieDetails"><h4>
+                    {% for actor in movie.actors%}
+                    {% if loop.index != loop.length%}
+                    <a href="/listActor/{{actor.actor_full_name}}">{{actor.actor_full_name}}</a>,
+                    {%else%}
+                    <a href="/listActor/{{actor.actor_full_name}}">{{actor.actor_full_name}}</a>
+                    {%endif%}
+                    {% endfor %}
+                </h4></div>
+            </th>
+        </tr>
+        <tr>
+            <th>
+                <div class="movieDetails"><h4>Movie Genres</h4></div>
+            </th>
+            <th>
+                <div class="movieDetails"><h4>
+                    {% for genre in movie.genres%}
+                    {% if loop.index != loop.length%}
+                    {{genre.genre_name}},
+                    {%else%}
+                    {{genre.genre_name}}
+                    {%endif%}
+                    {% endfor %}</h4></div>
+            </th>
+        </tr>
+    </table>
+</main>
+{% endblock %}

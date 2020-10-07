@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}"/>
+</head>
+<body>
+<div class="BigTitle"> <a href="/"><h1>COMPSCIFLIX</h1></a></div>
+<div id="page-container">
+   <div id="content-wrap">
+       <table><tr>
+           <th><a href="/">Home</a></th>
+           <th><a href="/the1000">The 1000</a></th>
+           {% for genre in genres%}
+           <th><a href="/listGenre/{{genre.genre_name}}">{{genre.genre_name}}</a>></th>
+           {% endfor%}
+       </table>
+        {% block content %}
+
+        {% endblock %}
+       </div>
+   <footer>Made By: Ybaj161; Yuvraj Bajwa</footer>
+ </div>
+</body>
+
+</html>

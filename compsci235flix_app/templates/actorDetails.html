@@ -1,0 +1,57 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<main>
+<head>
+    <meta charset="UTF-8">
+    <title>{{actor.actor_full_name}}</title>
+</head>
+    <h4>Actor Name</h4>
+    <h4>{{actor.actor_full_name}}</h4><br>
+    <h4>Actor Colleagues</h4>
+    <h4>
+                    {% for actor in actor.actor_colleague%}
+                    {% if loop.index != loop.length%}
+                     <a href="/listActor/{{actor.actor_full_name}}">{{actor.actor_full_name}}</a>,
+                    {%else%}
+                     <a href="/listActor/{{actor.actor_full_name}}">{{actor.actor_full_name}}</a>
+                    {%endif%}
+                    {% endfor %}
+    </h4><br>
+   <table>
+        <tr>
+
+            {% for movie in movies%}
+            <th>
+
+                <div class="Movie">
+                    <div class="MovieTitle">
+                        <h5>
+                            <a href="/listMovie/{{movie.release_year}}/{{movie.title}}"> {{movie.title}}
+                                {{"({0})".format(movie.release_year)}} </a>
+                        </h5>
+                    </div>
+                    <div class=movieDescription>
+                        <h6>{{movie.description[:101].strip() + "..."}}</h6>
+                    </div>
+                    <div class="runtime">
+                        <h6> {{movie.runtime_minutes}} mins</h6>
+                    </div>
+                </div>
+
+
+
+            </th>
+
+            {% if (loop.index) % 4 == 0 %}
+
+        </tr>
+        <tr>
+
+            {% endif %}
+            {% endfor %}
+
+        </tr>
+    </table>
+</main>
+{% endblock %}

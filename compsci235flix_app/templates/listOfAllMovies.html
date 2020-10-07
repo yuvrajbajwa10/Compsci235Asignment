@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+
+
+{% block content %}
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{pageTitle}}</title>
+</head>
+
+<main>
+    <div class="BigTitle">
+        <h2>{{headerName}}</h2>
+    </div>
+    <table>
+        <tr>
+
+            {% for movie in movies%}
+            <th>
+
+                <div class="Movie">
+                    <div class="MovieTitle">
+                        <h5>
+                            <a href="/listMovie/{{movie.release_year}}/{{movie.title}}"> {{movie.title}}
+                                {{"({0})".format(movie.release_year)}} </a>
+                        </h5>
+                    </div>
+                    <div class=movieDescription>
+                        <h6>{{movie.description[:101].strip() + "..."}}</h6>
+                    </div>
+                    <div class="runtime">
+                        <h6> {{movie.runtime_minutes}} mins</h6>
+                    </div>
+                </div>
+
+
+
+            </th>
+
+            {% if (loop.index) % 4 == 0 %}
+
+        </tr>
+        <tr>
+
+            {% endif %}
+            {% endfor %}
+
+        </tr>
+    </table>
+</main>
+{% endblock %}

@@ -1,0 +1,119 @@
+p, h1, h2, h3, h4 ,h5 ,h6, footer, a, .movieDetails
+{
+color: lightgrey;
+background-color: rgb(25, 25, 25);
+font-family: Verdana, Geneva, sans-serif;
+margin: 0px;
+}
+h2
+{
+   
+    width: 450px;
+    height: 50px;
+    padding-top: 15px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+.BigTitle
+{
+    margin-bottom: 10px;
+}
+#page-container {
+    position: relative;
+    min-height: 97vh;
+  }
+  
+#content-wrap {
+    padding-bottom: 50px;   
+  }
+footer
+{
+text-align: center;
+position: absolute;
+bottom: 0;
+width: 100%;
+height: 50px;
+font-weight: bold;
+}
+
+h1 {
+
+    padding-top: 20px;
+    height:  80px;
+    color:  darkred;
+    text-align: center;
+    font-family: Impact, Charcoal, sans-serif;
+
+}
+.Movie
+{
+    height: 170px;
+    position: relative;
+    max-width: 200px;
+    height: 150px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.MovieTitle
+{
+    padding-top: 5px;
+    padding-bottom: 10px;
+}
+.movieDescription
+{
+    width: 180px;
+    text-align: left;
+    margin-left: 10px;
+    
+}
+body
+{
+    background-color: rgb(15, 15, 15);
+}
+table
+{
+    background-color: darkred;
+    margin-left: auto;
+    margin-right: auto;
+}
+th 
+{
+    background-color: rgb(25, 25, 25);
+    border-radius: 10px;
+
+}
+
+.searchBar
+{
+    padding-top: 5px;
+    padding-bottom: 10px;
+    color: lightgrey;
+    width: 275px;
+    margin-left: auto;
+    margin-right: auto;   
+}
+.runtime
+{   
+    text-decoration: underline;
+    color:lightgrey;
+    position:absolute;
+    bottom: 5px;
+    right:0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-right: 5px;
+    
+}
+.movieDetails
+{
+    text-align: left;
+    line-height: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 8px;
+}
+#MovieDetailsTable
+{
+    max-width: 800px;
+}
