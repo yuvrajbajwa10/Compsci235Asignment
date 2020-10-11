@@ -15,6 +15,10 @@ class Movie:
         self._actors = []
         self._genres = []
         self._runtime_minutes = 0
+        self._votes = 0
+        self._rating = 0
+        self._meta_score = 0
+        self._revenue = 0
 
     @property
     def title(self):
@@ -44,6 +48,22 @@ class Movie:
     def genres(self):
         return self._genres
 
+    @property
+    def votes(self):
+        return self._votes
+
+    @property
+    def rating(self):
+        return self._rating
+
+    @property
+    def meta_score(self):
+        return self._meta_score
+
+    @property
+    def revenue(self):
+        return self._revenue
+
     @description.setter
     def description(self, value):
         if type(value) != str: value = None
@@ -59,6 +79,24 @@ class Movie:
     def runtime_minutes(self, value):
         if value < 0: raise ValueError
         self._runtime_minutes = value
+
+    @votes.setter
+    def votes(self, value):
+        if value < 0: raise ValueError
+        self._votes = value
+
+    @rating.setter
+    def rating(self, value):
+        if value < 0: raise ValueError
+        self._rating = value
+
+    @meta_score.setter
+    def meta_score(self, value):
+        self._meta_score = value
+
+    @revenue.setter
+    def revenue(self, value):
+        self._revenue = value
 
     def add_actor(self, actor):
         if isinstance(actor, Actor): self._actors.append(actor)

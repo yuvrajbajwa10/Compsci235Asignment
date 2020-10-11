@@ -1,4 +1,4 @@
-from domainmodel.movie import Movie
+from compsci235flix_app.domainmodel.movie import Movie
 
 
 class WatchList:

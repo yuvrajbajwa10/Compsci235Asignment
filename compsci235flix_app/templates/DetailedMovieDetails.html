@@ -5,6 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>{{movie.title}} {{"({0})".format(movie.release_year)}}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
     <div class = "BigTitle" > <h2>
     {{movie.title}} {{"({0})".format(movie.release_year)}}
@@ -39,7 +40,7 @@
                 <div class="movieDetails"><h4>Movie Director</h4></div>
             </th>
             <th>
-                <div class="movieDetails"><h4>{{movie.director.director_full_name}}</h4></div>
+                <div class="movieDetails"><h4><a href="/listdirector/{{movie.director.director_full_name}}">{{movie.director.director_full_name}}</a></h4></div>
             </th>
         </tr>
         <tr>
@@ -74,13 +75,54 @@
                 <div class="movieDetails"><h4>
                     {% for genre in movie.genres%}
                     {% if loop.index != loop.length%}
-                    {{genre.genre_name}},
+                    <a href="/listGenre/{{genre.genre_name}}">{{genre.genre_name}}</a>,
                     {%else%}
-                    {{genre.genre_name}}
+                    <a href="/listGenre/{{genre.genre_name}}">{{genre.genre_name}}</a>
                     {%endif%}
                     {% endfor %}</h4></div>
             </th>
         </tr>
+        <tr>
+            <th><div class="movieDetails"><h4>Rating</h4></div></th>
+            <th>
+                <div class="movieDetails"><h4>
+                    {% for i in range(10)%}
+                        {% if i < movie.rating - 1%}
+                            <span class="fa fa-star checked"></span>
+                        {% else %}
+                            <span class="fa fa-star"></span>
+                        {% endif %}
+                    {% endfor %}
+                    <br>
+                    {{movie.rating}} average rating based on {{movie.votes}} reviews
+                    </h4></div>
+            </th>
+        </tr>
+        <tr>
+            <th><div class="movieDetails"><h4>Revenue</h4></div></th>
+            <th><div class="movieDetails"><h4>${{movie.revenue}} Million</h4></div></th>
+        </tr>
+        <tr>
+            <th><div class="movieDetails"><h4>Metascore</h4></div></th>
+            <th><div class="movieDetails"><h4>{{movie.meta_score}}</h4></div></th>
+        </tr>
     </table>
+
+    {% if 'username' in session %}
+    <form action="{{handler_url}}" method="post">
+                {{form.csrf_token}} <!-- Need to include this token - Flask WTForms requires it. -->
+                <br>
+                <div class ="form-field">{{form.review.label}} </br>{{form.review(size = 100, placeholder="type your review", class="textarea", cols="50", rows="6", wrap="hard")}}
+                    {% if form.review.errors %}
+                        <ul class="errors">
+        	            {% for error in form.review.errors %}
+        		            <li>{{error}}</li>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+                {{ form.submit }}
+            </form>
+    {% endif %}
 </main>
 {% endblock %}

@@ -5,6 +5,11 @@ background-color: rgb(25, 25, 25);
 font-family: Verdana, Geneva, sans-serif;
 margin: 0px;
 }
+h4
+{
+    padding-top: 5px;
+    padding-bottom : 5px;
+}
 h2
 {
    
@@ -30,15 +35,18 @@ h2
 footer
 {
 text-align: center;
-position: absolute;
+position: relative;
 bottom: 0;
 width: 100%;
 height: 50px;
 font-weight: bold;
 }
-
+.footer
+{
+padding-left: 160px;
+}
 h1 {
-
+    padding-left: 160px;
     padding-top: 20px;
     height:  80px;
     color:  darkred;
@@ -76,6 +84,10 @@ table
     background-color: darkred;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 25px;
+    margin-top: 25px;
+    min-height: 100px;
+    width: 800px;
 }
 th 
 {
@@ -84,15 +96,6 @@ th
 
 }
 
-.searchBar
-{
-    padding-top: 5px;
-    padding-bottom: 10px;
-    color: lightgrey;
-    width: 275px;
-    margin-left: auto;
-    margin-right: auto;   
-}
 .runtime
 {   
     text-decoration: underline;
@@ -105,6 +108,18 @@ th
     padding-right: 5px;
     
 }
+.rating
+{
+    color:lightgrey;
+    position:absolute;
+    bottom: 5px;
+    left:0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-left: 5px;
+
+}
+
 .movieDetails
 {
     text-align: left;
@@ -116,4 +131,119 @@ th
 #MovieDetailsTable
 {
     max-width: 800px;
+}
+
+.sidenav {
+  height: auto%;
+  width: 160px;
+  position: absolute;
+  z-index: 1;
+  top: 18%;
+  left: 0;
+  background-color: rgb(25, 25, 25);
+  overflow-x: hidden;
+  padding-top: 15px;
+}
+
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 18px;
+  color: #818181;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+
+.searchBar
+{
+    margin: auto;
+    margin-top:200px;
+    margin-bottom:20px;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    color: lightgrey;
+    width: 575px;
+}
+
+.logo{
+  margin-left: auto;
+  margin-right: auto;
+  width: 272px;
+}
+.bar{
+  margin-top: 10px;
+  background: white;
+  width:575px;
+  border-radius:30px;
+  border:1px solid #dcdcdc;
+}
+.bar:hover{
+  box-shadow: 1px 1px 8px 1px #dcdcdc;
+}
+.bar:focus-within{
+  box-shadow: 1px 1px 8px 1px #dcdcdc;
+  outline:none;
+}
+.main
+{
+margin-left: 160px;
+}
+
+#searchText{
+  margin-left: 30px;
+  height:45px;
+  border:none;
+  width:525px;
+  font-size:16px;
+  outline: none;
+}
+.buttons{
+  padding-top:20px;
+  width: 166px;
+  margin: auto;
+}
+#submit{
+  background-color: #f5f5f5;
+  border:none;
+  color:#707070;
+  font-size:15px;
+  padding: 10px 20px;
+  margin:5px;
+  border-radius:4px;
+  outline:none;
+}
+#submit:hover{
+  border: 1px solid #c8c8c8;
+  padding: 9px 19px;
+  color:#808080;
+}
+#submit:focus{
+  border:1px solid #4885ed;
+  padding: 9px 19px;
+}
+.checked {
+  color: orange;
+}
+.fa fa-star checked
+{
+colspan:2;
+}
+
+.HelloName
+{
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 18px;
+  color: white;
+  display: block;
 }

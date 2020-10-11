@@ -3,24 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}"/>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
 </head>
 <body>
 <div class="BigTitle"> <a href="/"><h1>COMPSCIFLIX</h1></a></div>
+<div class="sidenav">
+            {% if 'username' in session %}
+            <div class="HelloName">Hello, {{ session['username'][0].upper() +session['username'][1:]  }}</div>
+            {% endif %}
+            <a href="/">Home</a>
+            <a href="/register">Register</a>
+            <a href="/login">Login</a>
+            <a href="/logout">Logout</a>
+            <a href="/the1000">The 1000</a>
+            {% for genre in genres%}
+                <a href="/listGenre/{{genre.genre_name}}">{{genre.genre_name}}</a>
+            {% endfor%}
+</div>
+<div class="main">
 <div id="page-container">
    <div id="content-wrap">
-       <table><tr>
-           <th><a href="/">Home</a></th>
-           <th><a href="/the1000">The 1000</a></th>
-           {% for genre in genres%}
-           <th><a href="/listGenre/{{genre.genre_name}}">{{genre.genre_name}}</a>></th>
-           {% endfor%}
-       </table>
         {% block content %}
 
         {% endblock %}
        </div>
-   <footer>Made By: Ybaj161; Yuvraj Bajwa</footer>
  </div>
+</div>
+<footer><br><div class="footer">Made By: Ybaj161, Yuvraj Bajwa;</div></footer>
 </body>
 
 </html>

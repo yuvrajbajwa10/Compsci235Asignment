@@ -1,25 +1,29 @@
-from domainmodel.movie import Movie
-from domainmodel.review import Review
+from compsci235flix_app.domainmodel.movie import Movie
+from compsci235flix_app.domainmodel.review import Review
 
 
 class User:
-    def __init__(self, username:str, password:str):
+    def __init__(self, username: str, password: str):
         self._username = username.strip().lower()
         self._password = password
         self._watched_movies = []
         self._reviews = []
-        self._tswmm = 0 # TSWMM = TimeSpentWatchingMoviesMinutes
+        self._tswmm = 0  # TSWMM = TimeSpentWatchingMoviesMinutes
 
     @property
     def username(self):
         return self._username
 
     @property
+    def password(self):
+        return self._password
+
+    @property
     def watched_movies(self):
         return self._watched_movies
 
     @property
-    def reviews (self):
+    def reviews(self):
         return self._reviews
 
     @property
@@ -30,17 +34,17 @@ class User:
         return f"<User {self.username}>"
 
     def __eq__(self, other):
-        if isinstance(other,User):
+        if isinstance(other, User):
             return self.username == other.username
-        return  False
+        return False
 
     def __lt__(self, other):
-       return self.username < other.username
+        return self.username < other.username
 
     def __hash__(self):
         return hash(self.username + self._password)
 
-    def watch_movie (self, movie):
+    def watch_movie(self, movie):
         if isinstance(movie, Movie):
             self._watched_movies.append(movie)
             self._tswmm += movie.runtime_minutes

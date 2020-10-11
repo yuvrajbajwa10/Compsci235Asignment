@@ -7,11 +7,17 @@
 {% block content %}
 <main>
     <div class="searchBar">
+        <div class="logo">
+            <a href="/"><img alt="COMPSCIFLIX" src="{{ url_for('static', filename='COMPFLIX.png') }}"></a>
+    </div>
     <form method="POST" action="">
         {{ form.csrf_token}}
-        {{form.searchText.label}}
+        <div class="bar">
         {{form.searchText}}
+        </div>
+         <div class="buttons">
         {{form.submit}}
+         </div>
     </form></div>
 </main>
 {% endblock %}

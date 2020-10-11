@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+{% block content %}
+<main>
+<div class="formwrapper">
+        <h2>{{Title}}</h2>
+        <form method="POST" action="{{handler_url}}">
+             {{ form.csrf_token }} <!-- Need to include this token - Flask WTForms requires it. -->
+            <table>
+                <tr>
+                    <div class="form-field"><th><h4>{{ form.username.label }}</h4></th><th><h4>{{ form.username }}
+                {% if form.username.errors or username_error_message is not none %}
+                    <ul class="errors">
+                        {% if username_error_message is not none %}
+                            <li>
+                                {{ username_error_message }}
+                            </li>
+                        {% endif %}
+                        {% for error in form.username.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}</h4></th>
+                    </div></tr>
+
+            <tr>
+                <div class="form-field"><th><h4>{{ form.password.label }}</h4></th><th><h4>{{ form.password }}
+                {% if form.password.errors or password_error_message is not none %}
+                    <ul class="errors">
+                        {% if password_error_message is not none %}
+                            <li>
+                                {{ password_error_message }}
+                            </li>
+                        {% endif %}
+                        {% for error in form.password.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}</h4></th>
+            </div>
+            </tr>
+                <tr><th colspan = '2'>{{ form.submit }}</th></tr>
+        </table>
+        </form>
+
+    </div>
+</main>
+{% endblock %}

@@ -6,10 +6,21 @@
     <meta charset="UTF-8">
     <title>{{actor.actor_full_name}}</title>
 </head>
-    <h4>Actor Name</h4>
-    <h4>{{actor.actor_full_name}}</h4><br>
-    <h4>Actor Colleagues</h4>
-    <h4>
+    <table>
+        <tr>
+            <th>
+            <h4>Actor Name</h4>
+            </th>
+            <th>
+                <h4>{{actor.actor_full_name}}</h4>
+            </th>
+        </tr>
+        <tr>
+            <th>
+            <h4>Actor Colleagues</h4>
+            </th>
+            <th>
+                    <h4>
                     {% for actor in actor.actor_colleague%}
                     {% if loop.index != loop.length%}
                      <a href="/listActor/{{actor.actor_full_name}}">{{actor.actor_full_name}}</a>,
@@ -17,8 +28,11 @@
                      <a href="/listActor/{{actor.actor_full_name}}">{{actor.actor_full_name}}</a>
                     {%endif%}
                     {% endfor %}
-    </h4><br>
-   <table>
+                    </h4>
+            </th>
+        </tr>
+    </table>
+        <table>
         <tr>
 
             {% for movie in movies%}
@@ -31,12 +45,15 @@
                                 {{"({0})".format(movie.release_year)}} </a>
                         </h5>
                     </div>
-                    <div class=movieDescription>
+                    <div class='movieDescription'>
                         <h6>{{movie.description[:101].strip() + "..."}}</h6>
                     </div>
-                    <div class="runtime">
+                    <span class="runtime">
                         <h6> {{movie.runtime_minutes}} mins</h6>
-                    </div>
+                    </span>
+                    <span class="rating">
+                        <h6>{{movie.rating}} of 10</h6>
+                    </span>
                 </div>
 
 
@@ -54,4 +71,5 @@
         </tr>
     </table>
 </main>
-{% endblock %}
+{% endblock content%}
+
