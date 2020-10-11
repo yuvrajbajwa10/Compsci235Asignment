@@ -23,6 +23,10 @@ class AuthenticationException(Exception):
     pass
 
 
+def add_review(movieId: str, review_text: str, username: str, repo: MovieFileCSVReader):
+    pass
+
+
 def reviewForm():
     review = TextAreaField('Comment', [
         DataRequired(),

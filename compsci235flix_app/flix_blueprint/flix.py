@@ -1,3 +1,5 @@
+from functools import wraps
+
 from flask import Blueprint, render_template, session
 from werkzeug.utils import redirect
 
@@ -25,7 +27,7 @@ def the1000():
                            genres=sorted(reader_instance.dataset_of_genres))
 
 
-@movie_bluePrint.route('/listMovie/<year>/<title>',methods=['GET', 'POST'])
+@movie_bluePrint.route('/listMovie/<year>/<title>', methods=['GET', 'POST'])
 def listMovie(year=0, title=""):
     form = reviewForm()
     movie = getMovies(int(year), title);
@@ -113,3 +115,42 @@ def login():
 def logout():
     session.clear()
     return redirect('/')
+
+
+def login_required(view):
+    @wraps(view)
+    def wrapped_view(**kwargs):
+        if 'username' not in session:
+            return redirect('/login')
+        return view(**kwargs)
+
+    return wrapped_view
+
+
+@movie_bluePrint.route('/comment', methods=['GET', 'POST'])
+@login_required
+def review_movie():
+    username = session['username']
+    form = reviewForm()
+    if form.validate_on_submit():
+        movie_id = form.article_id.data
+        add_comment(article_id, form.comment.data, username, repo.repo_instance)
+        article = services.get_article(article_id, repo.repo_instance)
+        return redirect(url_for('news_bp.articles_by_date', date=article['date'], view_comments_for=article_id))
+    if request.method == 'GET':
+        article_id = int(request.args.get('article'))
+        form.article_id.data = article_id
+    else:
+        article_id = form.movieId.data
+    article = services.get_article(article_id, repo.repo_instance)
+    return render_template(
+        'news/comment_on_article.html',
+        title='Edit article',
+        article=article,
+        form=form,
+        handler_url=url_for('news_bp.comment_on_article'),
+        selected_articles=utilities.get_selected_articles(),
+        tag_urls=utilities.get_tags_and_urls()
+    )
+
+
