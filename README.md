@@ -1,2 +1,4 @@
-# CS235FlixSkeleton
-The skeleton python project for the 2020 S2 CompSci 235 practical assignment CS235Flix.
+# Compsci235Asignment
+Upi: ybaj161
+Name Yuvraj Bajwa
+WElcome to the project yo.
