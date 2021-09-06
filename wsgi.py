@@ -8,6 +8,6 @@ app.config.from_object('config.Config')
 csrf = CSRFProtect(app)
 
 if __name__ == "__main__":
-    app.run(host='localhost', port=5000, threaded=False)
+    app.run()
     csrf.init_app(app)
 
