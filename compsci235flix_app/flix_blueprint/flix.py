@@ -1,6 +1,6 @@
 from functools import wraps
 
-from flask import Blueprint, render_template, session
+from flask import Blueprint, render_template, session, url_for
 from werkzeug.utils import redirect
 
 from compsci235flix_app.flix_blueprint.ultilites import *
