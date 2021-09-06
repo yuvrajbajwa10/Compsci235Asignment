@@ -2,4 +2,8 @@ from flask_wtf import CSRFProtect
 
 from compsci235flix_app import main
 
-CSRFProtect(main().config.from_object('config.Config'))
+app = main()
+app.config.from_object('config.Config')
+csrf = CSRFProtect(app)
+app.run()
+csrf.init_app(app)
