@@ -1,4 +1,11 @@
 # Compsci235Asignment
-Upi: ybaj161
+
+
 Name Yuvraj Bajwa
-WElcome to the project yo.
+
+
+To run the web-app install the packages in the requirements.txt using pip in the local folder.
+pip install -r requirements.txt
+
+then run the wsgi.py to start the local sever.
+
